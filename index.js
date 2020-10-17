@@ -3,11 +3,12 @@
 // 🏡 Task 1: Variables
 /* Create variables for principal, interest rate, and years. Assign them the values 200000, 0.05, and 30 respectively. Create another value called name and give it the value of your own name.
 */
+
+
 let principal = 200000
 let interestRate = 0.05
 let years = 30
 let name = 'Kelsey'
-
 
 
 
@@ -17,8 +18,11 @@ let name = 'Kelsey'
 (1) Create a variable called `monthlyInterestRate` and give it the value of interest rate divided by 12. 
 (2) Create another variable called `periods` and give it the value of years*12.
 */
+
+
  let monthlyInterestRate = interestRate / 12
  let periods = years * 12
+ 
 
 
 
@@ -38,10 +42,13 @@ Hint #2: you'll need to use the `math` object for parts of this calculation!
 
 When your math is correct, monthlyRate will equal 1073.64
 */
+
+
 let n1 = Math.pow ( [ 1 + monthlyInterestRate ] , periods)
 let numerator = principal * n1 * monthlyInterestRate
 let denominator = n1 - 1
 let monthlyRate = numerator / denominator
+
 
 
 
@@ -52,11 +59,21 @@ If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly 
 */
 
 function mortgageCalculator() {
-    let roundMonthlyRate = Math.round (100 * monthlyRate) / 100
-    return (name + ', your monthly rate is $' + roundMonthlyRate)
+    let principal = 200000;
+    let interestRate = 0.05;
+    let years = 30;
+    let name = 'Kelsey';
+    let monthlyInterestRate = interestRate / 12;
+    let periods = years * 12;
+    let n1 = Math.pow ( [ 1 + monthlyInterestRate ] , periods);
+    let numerator = principal * n1 * monthlyInterestRate;
+    let denominator = n1 - 1;
+    let monthlyRate = numerator / denominator;
+    let roundMonthlyRate = Math.round (100 * monthlyRate) / 100;
+    console.log(name + ', your monthly rate is $' + roundMonthlyRate)
 }
 
-console.log(mortgageCalculator())
+mortgageCalculator()
 
 
 // 🏡 Task 4: Arguments and Parameters
@@ -66,7 +83,18 @@ For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 */
 
+function mortgageCalculator(principal, interestRate, years) {
+    let monthlyInterestRate = interestRate / 12;
+    let periods = years * 12;
+    let n1 = Math.pow ( [ 1 + monthlyInterestRate ] , periods);
+    let numerator = principal * n1 * monthlyInterestRate;
+    let denominator = n1 - 1;
+    let monthlyRate = numerator / denominator;
+    let roundMonthlyRate = Math.round (100 * monthlyRate) / 100
+    console.log(name + ', your monthly rate is $' + roundMonthlyRate)
+}
 
+mortgageCalculator(230000, 0.06, 30)
 
 
 
@@ -77,8 +105,34 @@ Then, add control flow within your function such that IF creditScore is above 74
 
 Hint: To drop an interest rate by 5% you can take monthlyRate and multiply it by 0.95. Similarly, to increase an interest rate by 5% you'd do monthlyRate * 1.05. 
 */
+function mortgageCalculator(principal, interestRate, years, creditScore) {
+    
+    let monthlyInterestRate = interestRate / 12;
+    let periods = years * 12;
+    let n1 = Math.pow ( [ 1 + monthlyInterestRate ] , periods);
+    let numerator = principal * n1 * monthlyInterestRate;
+    let denominator = n1 - 1;
+    let monthlyRate = numerator / denominator;
+    let roundMonthlyRate = Math.round (100 * monthlyRate) / 100;
 
+    if (creditScore > 740) {
+        let discountMonthlyRate= monthlyRate * 0.95;
+        let discountRound = Math.round (100 * discountMonthlyRate) / 100;
+        console.log(name + ', your monthly rate is $' + discountRound)
+        }
 
+    else if (creditScore < 660) {
+        let feeMonthlyRate = monthlyRate * 1.05;
+        let feeRound = Math.round (100 * feeMonthlyRate) / 100;
+        console.log(name + ', your monthly rate is $' + feeRound)
+        }
+        
+    else console.log(name + ', your monthly rate is $' + roundMonthlyRate)  
+}
+
+mortgageCalculator(230000, 0.06, 30, 750)
+mortgageCalculator(230000, 0.06, 30, 650)
+mortgageCalculator(230000, 0.06, 30, 700)
 
 
 // 🏡 Task 6: Loops
@@ -97,7 +151,7 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
-
+/*function variableInterestRate(principal, )*/
 
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
